@@ -1,1 +1,1 @@
-*/5 * * * * php /home/magento/files/html/bin/magento cron:run >> /home/magento/files/html/var/log/magento.cron.log
+*/5 * * * * sh /home/magento/files/html/cron.sh >> /home/magento/files/html/var/log/magento.cron.log
