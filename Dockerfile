@@ -29,8 +29,8 @@ RUN sed -i -e"s/^bind-address\s*=\s*125.6.0.1/explicit_defaults_for_timestamp = 
 # apache config
 COPY conf/serve-web-dir.conf /tmp/
 RUN apt-get install -y apache2
-RUN sed -i 's/<\/VirtualHost>/\tAlias \/phpmyadmin\/ "\/usr\/share\/phpmyadmin\/"\n\t<FilesMatch \\.php$>\n\t\tSetHandler "proxy:unix:\/var\/run\/php\/php5.6-fpm.sock|fcgi:\/\/localhost\/"\n\t<\/FilesMatch>\n<\/VirtualHost>/g' /etc/apache2/sites-available/000-default.conf
-RUN sed -i 's/<\/VirtualHost>/\tAlias \/phpmyadmin\/ "\/usr\/share\/phpmyadmin\/"\n\t\t<FilesMatch \\.php$>\n\t\t\tSetHandler "proxy:unix:\/var\/run\/php\/php5.6-fpm.sock|fcgi:\/\/localhost\/"\n\t\t<\/FilesMatch>\n\t\tProxyPassMatch ^\/phpmyadmin\/(.*\\.php(\/.*)?)$ unix:\/var\/run\/php\/php5.6-fpm.sock|fcgi:\/\/\/usr\/share\/phpmyadmin\/\n\t<\/VirtualHost>/g' /etc/apache2/sites-available/default-ssl.conf && \
+RUN sed -i 's/<\/VirtualHost>/\tAlias \/phpmyadmin "\/usr\/share\/phpmyadmin\/"\n\t<FilesMatch \\.php$>\n\t\tSetHandler "proxy:unix:\/var\/run\/php\/php5.6-fpm.sock|fcgi:\/\/localhost\/"\n\t<\/FilesMatch>\n<\/VirtualHost>/g' /etc/apache2/sites-available/000-default.conf
+RUN sed -i 's/<\/VirtualHost>/\tAlias \/phpmyadmin "\/usr\/share\/phpmyadmin\/"\n\t\t<FilesMatch \\.php$>\n\t\t\tSetHandler "proxy:unix:\/var\/run\/php\/php5.6-fpm.sock|fcgi:\/\/localhost\/"\n\t\t<\/FilesMatch>\n\t\tProxyPassMatch ^\/phpmyadmin\/(.*\\.php(\/.*)?)$ unix:\/var\/run\/php\/php5.6-fpm.sock|fcgi:\/\/\/usr\/share\/phpmyadmin\/\n\t<\/VirtualHost>/g' /etc/apache2/sites-available/default-ssl.conf && \
     sed -i 's/\/var\/www\/html/\/home\/magento\/files\/html/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/default-ssl.conf && \
     cat /tmp/serve-web-dir.conf >> /etc/apache2/apache2.conf && rm -f /tmp/serve-web-dir.conf  && \
     a2enmod actions proxy_fcgi alias setenvif && \
