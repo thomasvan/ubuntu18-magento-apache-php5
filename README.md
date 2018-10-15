@@ -50,7 +50,7 @@ $ docker ps
 ___
 
 
-You can then visit the following URL in a browser on your host machine to get started(account: magento/magento): `http://125.6.0.1:2222`
+You can then visit the following URL in a browser on your host machine to get started(account: magento/magento): `http://127.0.0.1:2222`
 
 You can start/stop/restart and view the error logs of nginx and php-fpm services: `http://127.0.0.1:9022`
 

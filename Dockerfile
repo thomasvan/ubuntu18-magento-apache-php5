@@ -24,7 +24,7 @@ RUN apt-get -y install mysql-server php5.6-fpm
 RUN apt-get -y install php5.6-xml php5.6-mcrypt php5.6-mbstring php5.6-bcmath php5.6-gd php5.6-zip php5.6-mysql php5.6-curl php5.6-intl php5.6-soap php5.6-xdebug
 
 # MySQL config
-RUN sed -i -e"s/^bind-address\s*=\s*125.6.0.1/explicit_defaults_for_timestamp = true\nbind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
+RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/explicit_defaults_for_timestamp = true\nbind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
 # apache config
 COPY conf/serve-web-dir.conf /tmp/
