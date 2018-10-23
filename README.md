@@ -1,5 +1,4 @@
 ### Run the latest magento 2 on Ubuntu 18.04.1 LTS, including: 
-- Shell In A Box – A Web-Based SSH Terminal - version 2.x
 - Apache 2.4.x
 - php-fpm 5.6.x
 - elasticsearch 2.4.6
@@ -25,7 +24,6 @@ ___
 
 ### Usage
 Services and ports exposed
-- Shell In A Box – A Web-Based SSH Terminal - http://<container_ip>:4200
 - ElasticSearch 2.4.6 - <container_ip>:9000
 - MySQL - <container_ip>:3306
 - phpMyAdmin - http://<container_ip>/phpmyadmin
@@ -35,7 +33,7 @@ Services and ports exposed
 #### Sample container initialization: 
 
 ```bash
-$ docker run -v <your-webapp-root-directory>:/home/magento/files/html -p 4222:4200 -p 9022:9011 --name docker-name -d thomasvan/ubuntu18-magento-apache-php5-elasticsearch-mysql-phpmyadmin-redis-composer:latest
+$ docker run -v <your-webapp-root-directory>:/home/magento/files/html -p 9022:9011 --name docker-name -d thomasvan/ubuntu18-magento-apache-php5-elasticsearch-mysql-phpmyadmin-redis-composer:latest
 ```
 ___
 

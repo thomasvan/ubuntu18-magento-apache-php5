@@ -17,7 +17,7 @@ RUN apt-get update && apt-get -y upgrade && \
 
 
 # Basic Requirements
-RUN apt-get -y install python-setuptools curl git nano sudo unzip openssh-server openssl shellinabox
+RUN apt-get -y install python-setuptools curl git nano sudo unzip openssh-server openssl
 RUN apt-get -y install mysql-server php5.6-fpm
 
 # Magento Requirements
@@ -51,6 +51,10 @@ RUN phpdismod opcache xdebug && \
     sed -i -e "s/;catch_workers_output\s*=\s*yes/catch_workers_output = yes/g" /etc/php/5.6/fpm/pool.d/www.conf && \
     sed -i -e "s/user\s*=\s*www-data/user = magento/g" /etc/php/5.6/fpm/pool.d/www.conf
 ADD conf/xdebug.ini /etc/php/5.6/mods-available/xdebug.ini
+# Install composer and modman
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+    curl -sSL https://raw.github.com/colinmollenhour/modman/master/modman > /usr/sbin/modman && \
+    chmod +x /usr/sbin/modman
 
 # Supervisor Config
 RUN apt-get install -y supervisor
