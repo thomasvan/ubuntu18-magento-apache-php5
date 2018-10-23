@@ -12,7 +12,6 @@
 ```bash
 magento@c9786d14b245:~/files/html$ sudo supervisorctl 
 Apache2                          RUNNING   pid 835, uptime 3:02:33
-BroswerBased-SSH                 RUNNING   pid 18, uptime 3:15:58
 Cron                             RUNNING   pid 19, uptime 3:15:58
 ElasticSearch_2.x_9200           STOPPED   Not started
 MySQL                            RUNNING   pid 14, uptime 3:15:58
@@ -32,7 +31,7 @@ Services and ports exposed
 - Nginx and php-fpm 5.6.x - http://<container_ip> and https://<container_ip> for web browsing
 - Redis - <container_ip>:6379
 
-#### Sample container initialization:
+#### Sample container initialization
 
 ```bash
 $ docker run -v <your-webapp-root-directory>:/home/magento/files/html -p 9022:9011 --name docker-name -d thomasvan/ubuntu18-magento-apache-php5-elasticsearch-mysql-phpmyadmin-redis-composer:latest
@@ -42,15 +41,13 @@ ___
 After starting the container ubuntu18-magento-apache-php5-elasticsearch-mysql-phpmyadmin-redis-composer, please check to see if it has started and the port mapping is correct. This will also report the port mapping between the docker container and the host machine.
 
 ##### Accessing containers by port mapping
+
 ```bash
 $ docker ps
 
-0.0.0.0:9011->9022/tcp, 0.0.0.0:4022->4200/tcp
+0.0.0.0:9011->9022/tcp
 ```
 ___
-
-
-You can then visit the following URL in a browser on your host machine to get started(account: magento/magento): `http://127.0.0.1:2222`
 
 You can start/stop/restart and view the error logs of nginx and php-fpm services: `http://127.0.0.1:9022`
 
@@ -59,7 +56,6 @@ You can start/stop/restart and view the error logs of nginx and php-fpm services
 _For Windows 10, you need to [add route: route add 172.17.0.0 MASK 255.255.0.0 10.0.75.2](https://forums.docker.com/t/connecting-to-containers-ip-address/18817/13) manually before using one of the following ways to get internal IP:_
 - Looking into the output of `docker logs <container-id>`:
 - Using [docker inspect](https://docs.docker.com/engine/reference/commandline/inspect/parent-command) command
-- Checking the ~/readme.txt file by using [Web-Based SSH Terminal](http://127.0.0.1:2222)
 ___
  
 
