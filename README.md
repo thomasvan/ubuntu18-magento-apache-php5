@@ -1,4 +1,5 @@
-### Run the latest magento 2 on Ubuntu 18.04.1 LTS, including: 
+### Run the latest magento 2 on Ubuntu 18.04.1 LTS, including
+
 - Apache 2.4.x
 - php-fpm 5.6.x
 - elasticsearch 2.4.6
@@ -23,6 +24,7 @@ System-Log                       RUNNING   pid 21, uptime 3:15:58
 ___
 
 ### Usage
+
 Services and ports exposed
 - ElasticSearch 2.4.6 - <container_ip>:9000
 - MySQL - <container_ip>:3306
@@ -30,7 +32,7 @@ Services and ports exposed
 - Nginx and php-fpm 5.6.x - http://<container_ip> and https://<container_ip> for web browsing
 - Redis - <container_ip>:6379
 
-#### Sample container initialization: 
+#### Sample container initialization:
 
 ```bash
 $ docker run -v <your-webapp-root-directory>:/home/magento/files/html -p 9022:9011 --name docker-name -d thomasvan/ubuntu18-magento-apache-php5-elasticsearch-mysql-phpmyadmin-redis-composer:latest
